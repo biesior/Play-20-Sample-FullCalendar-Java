@@ -1,0 +1,40 @@
+@(pageTitle: String)
+
+@layouts.calendarLayout("Full calendar") {
+
+
+<div style="display: none;">
+    <form action="@routes.Application.addByAjax()" method="POST" id="eventFormNew">
+        <input type="text" name="title" id="newTitle"/>
+        <input type="text" name="start" id="newStart"/>
+        <input type="text" name="end" id="newEnd"/>
+        <input type="text" name="allDay" id="newAllDay"/>
+    </form>
+
+
+    <br/>
+
+    <form action="@routes.Application.move()" method="POST" id="eventFormMove">
+        <input type="text" name="id" id="moveId"/>
+        <input type="text" name="dayDelta" id="moveDayDelta"/>
+        <input type="text" name="minuteDelta" id="moveMinuteDelta"/>
+        <input type="text" name="allDay" id="moveAllDay"/>
+    </form>
+
+
+    <form action="@routes.Application.resize()" method="POST" id="eventFormResize">
+        <input type="text" name="id" id="resizeId"/>
+        <input type="text" name="dayDelta" id="resizeDayDelta"/>
+        <input type="text" name="minuteDelta" id="resizeMinuteDelta"/>
+    </form>
+</div>
+
+    <div id='calendar'></div>
+
+
+
+
+
+
+}
+

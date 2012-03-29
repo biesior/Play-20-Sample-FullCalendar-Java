@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.calendar()
+GET     /events                     controllers.Application.list()
+GET     /events.json                controllers.Application.json(start: Long ?= 0, end: Long ?= 0 )
+
+GET     /event/:id/edit             controllers.Application.edit(id:Long)
+POST    /event/:id/update           controllers.Application.update(id:Long)
+POST    /event                      controllers.Application.add()
+GET     /event/new                  controllers.Application.blank()
+GET     /event/:id/delete           controllers.Application.delete(id:Long)
+
+POST    /event-ajax                 controllers.Application.addByAjax()
+POST    /event-move                 controllers.Application.move()
+POST    /event-resize               controllers.Application.resize()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file       controllers.Assets.at(path="/public", file)

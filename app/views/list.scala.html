@@ -1,0 +1,39 @@
+@(events: List[Event])
+
+@layouts.mainLayout("List events") {
+
+<div class="container">
+    <h2>Event's list</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th  style="min-width:10px; max-width:900px;width:auto; white-space:nowrap;">Event</th>
+            <th style="width:104px;">From</th>
+            <th style="width:104px;">To</th>
+            <th style="width:14px;"><a href="@routes.Application.blank()" title="Add new event"><i class="icon-plus"></i></a></th>
+        </tr>
+        </thead>
+        <tbody>
+        @for(event <- events){
+        <tr>
+            <td><a href="@routes.Application.edit(event.id)">@event.title</a></td>
+            @if(event.allDay && event.endsSameDay){
+                <td colspan="2">@if(event.start == null){ - } else {@event.start.format("dd.MM.yyyy") (All day)}</td>
+            } else {
+                @if(event.allDay){
+                    <td colspan="2">@if(event.start == null){ - } else {@event.start.format("dd.MM.yyyy")} - @if(event.end == null){ - } else {@event.end.format("dd.MM.yyyy")} (All days)</td>
+                } else {
+                    <td>@if(event.start == null){ - } else {@event.start.format("dd.MM.yyyy H:mm")}</td>
+                    <td>@if(event.end == null){ - } else {@event.end.format("dd.MM.yyyy H:mm")}</td>
+                }
+            }
+            <td><a href="@routes.Application.delete(event.id)"><i class="icon-trash"></i></a> </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+    
+
+</div>
+
+}

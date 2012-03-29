@@ -1,0 +1,51 @@
+@(id: Long, eventForm: Form[Event], event: Event)
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(fields.twoColumns.f) }
+
+@layouts.mainLayout("Edit event: "+ event.title){
+<div class="container">
+
+    <h3>Edit event: @event.title </h3>
+
+    @helper.form(action = routes.Application.update(id), 'id->"eventFormEdit") {
+
+        @inputText(eventForm("title"), args =
+            '_label -> "Title",
+            'size ->18,
+            'placeholder -> "But not too long...",
+            'class -> "required",
+            'minlength -> "3"
+        )
+
+        @checkbox(field = eventForm("allDay"), args =
+            '_label -> "All day event?"
+        )
+
+        @inputText(eventForm("start"), args =
+            '_label -> "Start date",
+            '_help -> "",
+            'size ->18,
+            'placeholder -> "dd.mm.yyyy hh:mm",
+            'placeholder -> "dd.mm.yyyy",
+            'class -> "required"
+        )
+
+        @inputText(eventForm("end"), args =
+            '_label -> "End date",
+            '_help -> "",
+            'size ->18,
+            'placeholder -> "dd.mm.yyyy hh:mm"
+        )
+
+        <div class="row" id="rowOf_submitbuttons">
+            <div class="span8 offset2">
+            <input type="submit" value="Save an event" class="btn primary"> or
+            <a href="@routes.Application.list()" class="btn">Cancel</a>
+            </div>
+        </div>
+        }
+</div>
+}
+

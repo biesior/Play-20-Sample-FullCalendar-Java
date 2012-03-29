@@ -1,0 +1,15 @@
+@(elements: helper.FieldElements)
+
+<div class="row" id="rowOf_@elements.id">
+
+    <div class="span2"><label for="@elements.id">@elements.label</label></div>
+
+    <div class="span8">
+        <div class="@if(elements.hasErrors) {error}">
+            <div class="input">
+                @elements.input
+                <label for="@elements.id" generated="true" class="error">@elements.errors.mkString(", ")</label>
+            </div>
+        </div>
+    </div>
+</div>

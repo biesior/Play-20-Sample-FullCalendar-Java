@@ -1,0 +1,9 @@
+logs
+.idea
+project/project
+project/target
+target
+tmp
+.history
+dist
+fullcalendar.iml

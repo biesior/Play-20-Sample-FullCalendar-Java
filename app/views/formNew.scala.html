@@ -1,0 +1,55 @@
+@(eventForm: Form[Event])
+@import helper._
+@implicitField = @{ FieldConstructor(fields.twoColumns.f) }
+
+@layouts.mainLayout("Create new event"){
+<div class="container">
+    @helper.form(action = routes.Application.add, 'id->"eventFormNew") {
+
+        @inputText(eventForm("title"), args =
+            '_label -> "Title",
+            'size ->18,
+            'placeholder -> "But not too long...",
+            'class -> "required",
+            'minlength -> "3"
+        )
+
+        @checkbox(field = eventForm("allDay"), args =
+            '_label -> "All day event?",
+            'placeholder -> "dd.mm.yyyy hh:mm"
+        )
+
+
+        @inputText(eventForm("start"), args =
+            '_label -> "Start date",
+            '_help -> "",
+            'size ->18,
+            'placeholder -> "dd.mm.yyyy hh:mm",
+            'class -> "required"
+        )
+
+        @inputText(eventForm("end"), args =
+            '_label -> "End date",
+            '_help -> "",
+            'size ->18,
+            'placeholder -> "dd.mm.yyyy hh:mm"
+        )
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            $("#eventFormNew").validate();
+        });
+    </script>
+
+    <div class="row">
+        <div class="span8 offset2">
+        <input type="submit" value="Create an event" class="btn primary"> or
+        <a href="@routes.Application.list()" class="btn">Cancel</a>
+        </div>
+    </div>
+
+    }
+</div>
+}
+
