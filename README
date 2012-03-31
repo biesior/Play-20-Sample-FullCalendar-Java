@@ -1,4 +1,25 @@
 This is sample application for Play Framework 2.0 (Java version)
 ================================================================
 
-Current description can be always found at https://github.com/biesior/Play-20-Sample-FullCalendar-Java/wiki
+Current description can be always found at
+https://github.com/biesior/Play-20-Sample-FullCalendar-Java/wiki
+
+Running/starting sample
+================================================================
+I assume that you have downloaded and installed Play 2.0
+http://www.playframework.org/documentation/2.0/Installing
+
+All you need to do is cd to cloned folder and run application in dev mode:
+
+    bash#: play run
+
+as by default sample uses in mem H2 DB it will ask you for applying evolutions
+(it will recreate all structure with no events after each app re-run!)
+
+To switch to more stable DB ie. MySQL edit /conf/application.conf and uncoment
+mysql config (lines #27 - #30) and of course set proper values for db name
+(must exist, currently 'play-fullcalendar-sample'), user and password.
+
+There is configured mysql-connector in apps dependencies, you can remove it
+if you do not want to use MySQL DB in /project/Build.scala
+

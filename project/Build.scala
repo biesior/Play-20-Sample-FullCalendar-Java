@@ -5,7 +5,7 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
   val appName = "FullCalendar"
-  val appVersion = "1.1.1-Final"
+  val appVersion = "1.1.2-Snapshot"
 
   val appDependencies = Seq(
     // Add your project dependencies here,
