@@ -4,23 +4,27 @@
 # --- !Ups
 
 create table event (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   title                     varchar(255),
-  all_day                   tinyint(1) default 0,
-  start                     datetime,
-  end                       datetime,
-  ends_same_day             tinyint(1) default 0,
+  all_day                   boolean,
+  start                     timestamp,
+  end                       timestamp,
+  ends_same_day             boolean,
   constraint pk_event primary key (id))
 ;
+
+create sequence event_seq;
 
 
 
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table event;
+drop table if exists event;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists event_seq;
 
